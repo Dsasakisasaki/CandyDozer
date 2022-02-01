@@ -2951,10 +2951,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498e1f20c0c537f429095e4c60840dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candyPrefab: {fileID: 4199135513696742150, guid: 3fd433a76400d844ca9fb0a25cfcf6a0,
-    type: 3}
+  candyPrefabs:
+  - {fileID: 4199135513696742150, guid: fe2fe32bc4441a545a2010df44bd993c, type: 3}
+  - {fileID: 4199135513696742150, guid: 1134b8bea2e370b43aecc7afd3243dd6, type: 3}
+  - {fileID: 4199135513696742150, guid: e8920d399f629e04b8f54fb5e96e849f, type: 3}
+  - {fileID: 4199135513696742150, guid: 3fd433a76400d844ca9fb0a25cfcf6a0, type: 3}
+  candyParentTransform: {fileID: 1967293973}
   shotForce: 560
   shotTorque: 30
+  baseWidth: 5
 --- !u!4 &1912403141
 Transform:
   m_ObjectHideFlags: 0

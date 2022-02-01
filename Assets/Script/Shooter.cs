@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    public GameObject[] candyPrefabs;
-    public Transform candyParentTransform;
+    public GameObject[] candyPrefabs;//ゲームオブジェクト型配列
+    public Transform candyParentTransform;//親子関係を結ぶため
     public float shotForce;
     public float shotTorque;
-    public float baseWidth;
+    public float baseWidth;//baseObjectから幅５を取ってきてもいいが面倒なのでインスペクターから入力できるようにした
 
     void Update()
     {
@@ -31,11 +31,17 @@ public class Shooter : MonoBehaviour
 
     public void Shot()
     {
+        //プレハブからCandyオブジェクトを作成
         GameObject candy = Instantiate(
-            candyPrefab,
-            transform.position,
-            Quaternion.identity
+            SampleCandy(),//作るオブジェクト
+            GetInstantiatePosition(),//作る場所
+            Quaternion.identity//向き
             );
+        //生成したCandyオブジェクトにcandyParentTransformを親として設定する
+        candy.transform.parent = candyParentTransform;//ここで代入したものの子要素になる。
+        //ここで代入できるのはTransformを持つオブジェクト(全てのゲームオブジェクトはTransformを持っているのでつまり全ては親になれる)
+
+        //CandyオブジェクトのRigidbodyを習得し力と回転を加える
         Rigidbody candyRigidBody = candy.GetComponent<Rigidbody>();
         candyRigidBody.AddForce(transform.forward * shotForce);
         candyRigidBody.AddTorque(new Vector3(0, shotTorque, 0));
